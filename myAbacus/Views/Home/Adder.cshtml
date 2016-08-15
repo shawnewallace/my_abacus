@@ -1,0 +1,22 @@
+﻿@model myAbacus.Models.AbacusViewModel
+
+@{
+  ViewBag.Title = "My Abacus";
+}
+
+
+
+@using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+{
+  <h1>My Abacus</h1>
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+  <br />
+  @Html.TextBoxFor(m => m.LeftSide)
+  <label>+</label>
+  @Html.TextBoxFor(m => m.RightSide)
+
+  <input type="submit" value="="/>
+  <input type="text" readonly="readonly" value="@Model.Sum"/>
+}
